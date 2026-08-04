@@ -1,23 +1,33 @@
 # Sentiora
 
-Sentiora is a web application for capturing, organizing, and exploring user memories.
+Sentiora is a monorepo for the Sentiora product, supporting documentation, and shared design assets.
 
-## What We Are Building
+## Repository Structure
 
-This repository will contain the main website and product experience for the Sentiora MVP.
+- `docs/` finalized engineering documentation and archived drafts
+- `Design/` Figma exports, screenshots, tokens, and visual references
+- `frontend/` reserved for the future frontend application
+- `backend/` reserved for the future backend service
+- `extension/` reserved for the future extension workstream
+- `shared/` reserved for shared code and assets
+- `infrastructure/` reserved for deployment and infrastructure assets
+- `scripts/` reserved for project automation scripts
+- `tests/` reserved for cross-cutting validation and test assets
 
-## Current References
+## Implementation Phases
 
-- Product and feature documentation: `Docs/`
-- Design reference and Figma link: `Design/Figma/`
-- Screenshot flow guide: `Design/Figma/SCREENSHOT_FLOW.md`
+1. Phase 0: repository organization and documentation baseline
+2. Phase 1: frontend, backend, and extension foundations
+3. Phase 2: shared utilities, infrastructure, and validation setup
+4. Phase 3: implementation of product features and release readiness
 
-## Notes
+## Documentation
 
-- Follow the Figma design as the visual source of truth.
-- Follow the documentation in `Docs/` for product behavior.
-- Reuse the shared design tokens and exported assets when building screens.
-
-## Status
-
-The website is in early development.
+- [docs/Implementation_plan.pdf](docs/Implementation_plan.pdf)
+- [docs/Technical_specification.pdf](docs/Technical_specification.pdf)
+- [docs/Ui_UX_specifications.pdf](docs/Ui_UX_specifications.pdf)
+- [docs/PRD.pdf](docs/PRD.pdf)
+- [docs/srs.pdf](docs/srs.pdf)
+- [docs/Database_schema.pdf](docs/Database_schema.pdf)
+- [docs/Backend_technical_specification.pdf](docs/Backend_technical_specification.pdf)
+- [docs/API_specification.pdf](docs/API_specification.pdf)
