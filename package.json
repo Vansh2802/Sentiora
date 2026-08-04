@@ -38,7 +38,7 @@
     "typecheck:frontend": "npm run typecheck --workspace frontend",
     "typecheck:extension": "npm run typecheck --workspace extension",
     "typecheck:shared": "npm run typecheck --workspace shared",
-    "typecheck:backend": "C:/Users/HP/AppData/Local/Programs/Python/Python312/python.exe -m mypy backend/app",
+    "typecheck:backend": "cd backend && C:/Users/HP/AppData/Local/Programs/Python/Python312/python.exe -m mypy app",
     "compose:up": "docker compose up",
     "compose:down": "docker compose down"
   },

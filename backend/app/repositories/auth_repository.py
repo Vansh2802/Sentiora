@@ -1,3 +1,4 @@
+from typing import cast
 from datetime import datetime, timezone
 from uuid import UUID
 
@@ -52,9 +53,10 @@ class AuthRepository:
         return refresh_token
 
     def get_refresh_token_by_hash(self, token_hash: str) -> RefreshToken | None:
-        return self.db.execute(
+        result = self.db.execute(
             select(RefreshToken).where(RefreshToken.token_hash == token_hash)
         ).scalar_one_or_none()
+        return cast(RefreshToken | None, result)
 
     def revoke_refresh_token(self, token_record: RefreshToken) -> None:
         token_record.is_revoked = True

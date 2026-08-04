@@ -1,4 +1,5 @@
 import hashlib
+import uuid
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
@@ -13,11 +14,11 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 def hash_password(password: str) -> str:
-    return pwd_context.hash(password)
+    return str(pwd_context.hash(password))
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return pwd_context.verify(plain_password, hashed_password)
+    return bool(pwd_context.verify(plain_password, hashed_password))
 
 
 def hash_refresh_token(token: str) -> str:
@@ -36,6 +37,7 @@ def create_access_token(user_id: str, expires_delta: timedelta | None = None) ->
         "type": "access",
         "iat": now,
         "exp": expire,
+        "jti": uuid.uuid4().hex,
     }
     return jwt.encode(payload, settings.jwt_secret_key, algorithm=settings.jwt_algorithm)
 
@@ -52,6 +54,7 @@ def create_refresh_token(user_id: str, expires_delta: timedelta | None = None) -
         "type": "refresh",
         "iat": now,
         "exp": expire,
+        "jti": uuid.uuid4().hex,
     }
     return jwt.encode(payload, settings.jwt_secret_key, algorithm=settings.jwt_algorithm)
 

@@ -1,3 +1,4 @@
+from typing import cast
 from uuid import UUID
 
 from sqlalchemy import select
@@ -11,14 +12,16 @@ class UserRepository:
         self.db = db
 
     def get_by_id(self, user_id: UUID) -> User | None:
-        return self.db.execute(
+        result = self.db.execute(
             select(User).where(User.id == user_id, User.deleted_at.is_(None))
         ).scalar_one_or_none()
+        return cast(User | None, result)
 
     def get_by_email(self, email: str) -> User | None:
-        return self.db.execute(
+        result = self.db.execute(
             select(User).where(User.email == email.lower(), User.deleted_at.is_(None))
         ).scalar_one_or_none()
+        return cast(User | None, result)
 
     def create_user(
         self,
