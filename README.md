@@ -23,11 +23,11 @@ Sentiora is a monorepo for the Sentiora product, supporting documentation, and s
 
 ## Documentation
 
-- [docs/Implementation_plan.pdf](docs/Implementation_plan.pdf)
-- [docs/Technical_specification.pdf](docs/Technical_specification.pdf)
-- [docs/Ui_UX_specifications.pdf](docs/Ui_UX_specifications.pdf)
-- [docs/PRD.pdf](docs/PRD.pdf)
-- [docs/srs.pdf](docs/srs.pdf)
-- [docs/Database_schema.pdf](docs/Database_schema.pdf)
-- [docs/Backend_technical_specification.pdf](docs/Backend_technical_specification.pdf)
-- [docs/API_specification.pdf](docs/API_specification.pdf)
+- [docs/01_PRD_v2.1_FINAL.pdf](docs/01_PRD_v2.1_FINAL.pdf)
+- [docs/02_SRS_v1.0.pdf](docs/02_SRS_v1.0.pdf)
+- [docs/03_Backend_Technical_Specification_v1.2.pdf](docs/03_Backend_Technical_Specification_v1.2.pdf)
+- [docs/04_Technical_Specification_v1.2.pdf](docs/04_Technical_Specification_v1.2.pdf)
+- [docs/05_API_Specification_v1.0.pdf](docs/05_API_Specification_v1.0.pdf)
+- [docs/06_Database_Schema_Design_v1.2.pdf](docs/06_Database_Schema_Design_v1.2.pdf)
+- [docs/07_Development_Implementation_Plan.pdf](docs/07_Development_Implementation_Plan.pdf)
+- [docs/08_UIUX_Specification_v1.0_FINAL.pdf](docs/08_UIUX_Specification_v1.0_FINAL.pdf)

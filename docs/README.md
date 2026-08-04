@@ -2,28 +2,28 @@
 
 Every document in this folder is a canonical engineering document and must be treated as the source of truth during implementation.
 
-1. 01 - Product Requirements Document (PRD)
+1. [01_PRD_v2.1_FINAL.pdf](01_PRD_v2.1_FINAL.pdf) - Product Requirements Document (PRD)
 Defines product vision, business goals, MVP scope, user personas, and product requirements.
 
-2. 02 - Software Requirements Specification (SRS)
+2. [02_SRS_v1.0.pdf](02_SRS_v1.0.pdf) - Software Requirements Specification (SRS)
 Functional requirements, non-functional requirements, system behavior, constraints, and acceptance criteria.
 
-3. 03 - Backend Technical Specification
+3. [03_Backend_Technical_Specification_v1.2.pdf](03_Backend_Technical_Specification_v1.2.pdf) - Backend Technical Specification
 Backend architecture, services, APIs, processing pipeline, authentication, storage, and implementation guidance.
 
-4. 04 - Technical Specification
+4. [04_Technical_Specification_v1.2.pdf](04_Technical_Specification_v1.2.pdf) - Technical Specification
 Overall system architecture, technology stack, high-level design, and engineering decisions.
 
-5. 05 - API Specification
+5. [05_API_Specification_v1.0.pdf](05_API_Specification_v1.0.pdf) - API Specification
 REST API contracts, request/response formats, endpoints, validation, and status codes.
 
-6. 06 - Database Schema Design
+6. [06_Database_Schema_Design_v1.2.pdf](06_Database_Schema_Design_v1.2.pdf) - Database Schema Design
 Collections, relationships, indexes, database architecture, and storage strategy.
 
-7. 07 - Development & Implementation Plan
+7. [07_Development_Implementation_Plan.pdf](07_Development_Implementation_Plan.pdf) - Development & Implementation Plan
 Defines the official implementation roadmap. Development MUST always follow this phase sequence.
 
-8. 08 - UI/UX Specification
+8. [08_UIUX_Specification_v1.0_FINAL.pdf](08_UIUX_Specification_v1.0_FINAL.pdf) - UI/UX Specification
 Design system, layouts, components, user flows, spacing, typography, and visual guidelines.
 
 The documents in this directory are the canonical source of truth for the Sentiora project. If conflicts arise between implementation and documentation, the documentation should be reviewed before making engineering decisions.
