@@ -3,15 +3,15 @@ services:
     image: postgres:16-alpine
     container_name: sentiora-postgres
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-sentiora}
-      POSTGRES_USER: ${POSTGRES_USER:-sentiora}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sentiora}
+      POSTGRES_DB: Sentiora
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Vansh2802
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sentiora} -d ${POSTGRES_DB:-sentiora}"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d Sentiora"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -43,8 +43,8 @@ services:
       APP_ENVIRONMENT: ${APP_ENVIRONMENT:-development}
       APP_VERSION: ${APP_VERSION:-0.1.0}
       API_V1_PREFIX: ${API_V1_PREFIX:-/api/v1}
-      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg://sentiora:sentiora@postgres:5432/sentiora}
-      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      DATABASE_URL: postgresql+psycopg://postgres:Vansh2802@postgres:5432/Sentiora
+      REDIS_URL: redis://redis:6379/0
       CORS_ORIGINS: ${CORS_ORIGINS:-["http://localhost:5173"]}
     volumes:
       - ./backend:/app/backend
@@ -66,8 +66,8 @@ services:
       APP_NAME: ${APP_NAME:-Sentiora Backend}
       APP_ENVIRONMENT: ${APP_ENVIRONMENT:-development}
       APP_VERSION: ${APP_VERSION:-0.1.0}
-      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg://sentiora:sentiora@postgres:5432/sentiora}
-      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      DATABASE_URL: postgresql+psycopg://postgres:Vansh2802@postgres:5432/Sentiora
+      REDIS_URL: redis://redis:6379/0
     volumes:
       - ./backend:/app/backend
     depends_on:
@@ -76,6 +76,22 @@ services:
       redis:
         condition: service_healthy
 
+  pgadmin:
+    image: dpage/pgadmin4:8
+    container_name: sentiora-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@sentiora.ai}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./infrastructure/pgadmin/servers.json:/pgadmin4/servers.json
+    depends_on:
+      postgres:
+        condition: service_healthy
+
 volumes:
   postgres_data:
   redis_data:
+  pgadmin_data:

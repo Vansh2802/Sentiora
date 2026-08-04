@@ -54,12 +54,31 @@ Sentiora is a memory-oriented application repository with a locked phase-based i
 
 ## Local Development
 
+### Official Backend Development Workflow
+
+To start the backend with the Docker-first environment:
+
+1. Start database, cache, and pgAdmin containers:
+   ```bash
+   docker compose up -d
+   ```
+2. Apply database migrations using Alembic:
+   ```bash
+   cd backend
+   alembic upgrade head
+   ```
+3. Start the FastAPI development server:
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+### Other Services
+
 - Frontend dev server: `npm run dev:frontend`
 - Extension watch build: `npm run dev:extension`
 - Shared package typecheck: `npm run dev:shared`
-- Backend API: `npm run dev:backend`
 - Backend worker: `npm run dev:worker`
-- All containerized services: `docker compose up`
+- View Database Client (pgAdmin): Access `http://localhost:5050` (Login: `admin@sentiora.ai` / Password: `admin`)
 
 ## Health Endpoint
 

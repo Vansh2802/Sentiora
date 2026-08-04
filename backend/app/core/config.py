@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     app_environment: str = "development"
     app_version: str = "0.1.0"
     api_v1_prefix: str = "/api/v1"
-    database_url: str = "postgresql+psycopg://sentiora:sentiora@localhost:5432/sentiora"
+    database_url: str = "postgresql+psycopg://postgres:Vansh2802@localhost:5432/Sentiora"
     redis_url: str = "redis://localhost:6379/0"
     cors_origins: list[str] = Field(default_factory=lambda: ["http://localhost:5173"])
     jwt_secret_key: str = "DEV_SECRET_KEY_CHANGE_IN_PRODUCTION_SENTIORA_2026"
