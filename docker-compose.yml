@@ -1,0 +1,81 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: sentiora-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-sentiora}
+      POSTGRES_USER: ${POSTGRES_USER:-sentiora}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sentiora}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sentiora} -d ${POSTGRES_DB:-sentiora}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  redis:
+    image: redis:7-alpine
+    container_name: sentiora-redis
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sentiora-backend
+    command: ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    environment:
+      APP_NAME: ${APP_NAME:-Sentiora Backend}
+      APP_ENVIRONMENT: ${APP_ENVIRONMENT:-development}
+      APP_VERSION: ${APP_VERSION:-0.1.0}
+      API_V1_PREFIX: ${API_V1_PREFIX:-/api/v1}
+      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg://sentiora:sentiora@postgres:5432/sentiora}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      CORS_ORIGINS: ${CORS_ORIGINS:-["http://localhost:5173"]}
+    volumes:
+      - ./backend:/app/backend
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sentiora-worker
+    command: ["python", "-m", "app.workers.worker"]
+    environment:
+      APP_NAME: ${APP_NAME:-Sentiora Backend}
+      APP_ENVIRONMENT: ${APP_ENVIRONMENT:-development}
+      APP_VERSION: ${APP_VERSION:-0.1.0}
+      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg://sentiora:sentiora@postgres:5432/sentiora}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+    volumes:
+      - ./backend:/app/backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  redis_data:

@@ -4,3 +4,29 @@ Desktop.ini
 .DS_Store
 .vscode/
 .idea/
+
+# Environment files
+.env
+.env.*
+!.env.example
+!backend/.env.example
+!frontend/.env.example
+!extension/.env.example
+
+# Node / frontend artifacts
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+vite.svg
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+build/
+*.egg-info/

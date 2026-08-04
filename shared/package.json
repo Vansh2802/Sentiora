@@ -1,0 +1,13 @@
+{
+  "name": "@sentiora/shared",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch --noEmit -p tsconfig.json",
+    "build": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  }
+}
