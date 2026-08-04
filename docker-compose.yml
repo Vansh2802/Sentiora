@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_DB: Sentiora
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Vansh2802
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-CHANGE_ME_LOCAL_DEV}
     ports:
       - "5432:5432"
     volumes:
@@ -43,7 +43,7 @@ services:
       APP_ENVIRONMENT: ${APP_ENVIRONMENT:-development}
       APP_VERSION: ${APP_VERSION:-0.1.0}
       API_V1_PREFIX: ${API_V1_PREFIX:-/api/v1}
-      DATABASE_URL: postgresql+psycopg://postgres:Vansh2802@postgres:5432/Sentiora
+      DATABASE_URL: postgresql+psycopg://postgres:${POSTGRES_PASSWORD:-CHANGE_ME_LOCAL_DEV}@postgres:5432/Sentiora
       REDIS_URL: redis://redis:6379/0
       CORS_ORIGINS: ${CORS_ORIGINS:-["http://localhost:5173"]}
     volumes:
@@ -66,7 +66,7 @@ services:
       APP_NAME: ${APP_NAME:-Sentiora Backend}
       APP_ENVIRONMENT: ${APP_ENVIRONMENT:-development}
       APP_VERSION: ${APP_VERSION:-0.1.0}
-      DATABASE_URL: postgresql+psycopg://postgres:Vansh2802@postgres:5432/Sentiora
+      DATABASE_URL: postgresql+psycopg://postgres:${POSTGRES_PASSWORD:-CHANGE_ME_LOCAL_DEV}@postgres:5432/Sentiora
       REDIS_URL: redis://redis:6379/0
     volumes:
       - ./backend:/app/backend

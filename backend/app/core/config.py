@@ -1,7 +1,13 @@
 from functools import lru_cache
+from typing import Self
 
-from pydantic import Field, field_validator
+from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+DEFAULT_JWT_SECRET_KEY = "DEV_SECRET_KEY_CHANGE_IN_PRODUCTION_SENTIORA_2026"
+DEFAULT_DATABASE_URL = (
+    "postgresql+psycopg://postgres:CHANGE_ME_LOCAL_DEV@localhost:5432/Sentiora"
+)
 
 
 class Settings(BaseSettings):
@@ -15,10 +21,11 @@ class Settings(BaseSettings):
     app_environment: str = "development"
     app_version: str = "0.1.0"
     api_v1_prefix: str = "/api/v1"
-    database_url: str = "postgresql+psycopg://postgres:Vansh2802@localhost:5432/Sentiora"
+    database_url: str = DEFAULT_DATABASE_URL
     redis_url: str = "redis://localhost:6379/0"
     cors_origins: list[str] = Field(default_factory=lambda: ["http://localhost:5173"])
-    jwt_secret_key: str = "DEV_SECRET_KEY_CHANGE_IN_PRODUCTION_SENTIORA_2026"
+    # MUST be overridden via JWT_SECRET_KEY env var in staging/production.
+    jwt_secret_key: str = DEFAULT_JWT_SECRET_KEY
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 15
     refresh_token_expire_days: int = 30
@@ -33,6 +40,16 @@ class Settings(BaseSettings):
         if isinstance(value, list):
             return [str(origin).strip() for origin in value if str(origin).strip()]
         return []
+
+    @model_validator(mode="after")
+    def validate_non_development_secrets(self) -> Self:
+        if self.app_environment != "development":
+            if self.jwt_secret_key == DEFAULT_JWT_SECRET_KEY:
+                raise ValueError(
+                    "jwt_secret_key must be set via JWT_SECRET_KEY when "
+                    "app_environment is not 'development'"
+                )
+        return self
 
 
 @lru_cache(maxsize=1)

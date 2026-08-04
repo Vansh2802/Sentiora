@@ -1,3 +1,6 @@
+# Option A (RQ): Implementation Plan §4.4 originally referenced Celery, but Phase 0
+# scaffolded Redis Queue (rq) — pyproject.toml, worker.py, and docker-compose already
+# use RQ; migrating to Celery would be a larger Phase 4 change with no Phase 1 benefit.
 from redis import Redis
 from rq import Queue
 

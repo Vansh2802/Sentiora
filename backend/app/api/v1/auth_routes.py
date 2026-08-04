@@ -57,6 +57,7 @@ def login(
     service = AuthService(db)
     user_agent = request.headers.get("user-agent")
     ip_address = request.client.host if request.client else None
+    # TestClient shim: FastAPI's TestClient reports client host as 'testclient'
     if ip_address == "testclient":
         ip_address = "127.0.0.1"
     data = service.login(req, ip_address=ip_address, user_agent=user_agent)
