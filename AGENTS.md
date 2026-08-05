@@ -16,6 +16,8 @@ AI agents MUST read the documentation in the docs folder before implementing any
 - 06_Database_Schema_Design_v1.2.pdf
 - 07_Development_Implementation_Plan.pdf
 - 08_UIUX_Specification_v1.0_FINAL.pdf
+- TASKS.md
+- PROMPT_GUIDE.md
 
 ## Development Rules
 

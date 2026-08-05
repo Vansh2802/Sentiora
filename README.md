@@ -16,17 +16,17 @@ Sentiora is a memory-oriented application repository with a locked phase-based i
 
 ## Implementation Phases
 
-1. Repository Preparation: documentation and canonical repository setup
-2. Phase 0: foundation and developer environment scaffold
-3. Phase 1: product implementation work begins
-4. Phase 2: continued feature delivery and system hardening
-5. Phase 3: implementation expansion
-6. Phase 4: implementation expansion
-7. Phase 5: implementation expansion
-8. Phase 6: implementation expansion
-9. Phase 7: implementation expansion
-10. Phase 8: implementation expansion
-11. Phase 9: implementation completion
+1. **Repository Preparation**: documentation and canonical repository setup
+2. **Phase 0**: Environment & Foundations
+3. **Phase 1**: Authentication
+4. **Phase 2**: Chrome Extension Skeleton
+5. **Phase 3**: Capture Pipeline
+6. **Phase 4**: Backend Core APIs
+7. **Phase 5**: Frontend Dashboard
+8. **Phase 6**: Search
+9. **Phase 7**: AI / RAG Chat
+10. **Phase 8**: Testing
+11. **Phase 9**: Deployment & Launch
 
 ## Documentation
 
@@ -38,6 +38,8 @@ Sentiora is a memory-oriented application repository with a locked phase-based i
 - [docs/06_Database_Schema_Design_v1.2.pdf](docs/06_Database_Schema_Design_v1.2.pdf)
 - [docs/07_Development_Implementation_Plan.pdf](docs/07_Development_Implementation_Plan.pdf)
 - [docs/08_UIUX_Specification_v1.0_FINAL.pdf](docs/08_UIUX_Specification_v1.0_FINAL.pdf)
+- [docs/TASKS.md](docs/TASKS.md)
+- [docs/PROMPT_GUIDE.md](docs/PROMPT_GUIDE.md)
 
 ## Developer Prerequisites
 

@@ -26,4 +26,10 @@ Defines the official implementation roadmap. Development MUST always follow this
 8. [08_UIUX_Specification_v1.0_FINAL.pdf](08_UIUX_Specification_v1.0_FINAL.pdf) - UI/UX Specification
 Design system, layouts, components, user flows, spacing, typography, and visual guidelines.
 
+9. [TASKS.md](TASKS.md) - Project Tasks & Progress Tracker
+Single source of truth for engineering progress, completed phases, and upcoming work.
+
+10. [PROMPT_GUIDE.md](PROMPT_GUIDE.md) - AI Prompt Guide
+Guide and instructions for AI agents on how to read docs, write code, and verify tasks.
+
 The documents in this directory are the canonical source of truth for the Sentiora project. If conflicts arise between implementation and documentation, the documentation should be reviewed before making engineering decisions.
